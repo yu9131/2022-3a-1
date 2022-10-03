@@ -12,45 +12,6 @@
 |10  |使用者訓練|20|7, 8|
 |11  |使用者測試|25|9, 10|
 ---
-```mermaid
-gantt
-    title 甘特圖
-
-    section 研擬計畫
-    工作1 :a1, 2022-10-03, 1d
-        
-    section 任務分配
-    工作1 :a2, after a1, 4d
-       
-    section 取得硬體
-    工作1 :a3, after a1, 17d
-    
-    section 程式開發
-    工作1 :a4, after a2, 70d
-        
-    section 安裝硬體
-    工作1 :a5, after a3, 10d
-        
-    section 程式測試
-    工作2 :a6, after a4, 30d
-    
-    section 撰寫使用手冊
-    工作1 :a7, after a5, 25d
-    
-    section 轉換檔案
-    工作1 :a8, after a5, 20d
-    
-    section 系統測試
-    工作1 :a9, after a6, 25d
-    
-    section 使用者訓練
-    工作1 :a10, after a7 a8, 20d
-    
-    section 使用者測試
-    工作1 :a11, after a9 a10, 25d
-    
-```
----
 
 ### 1. PERT/CPM 圖
 ```mermaid
@@ -97,6 +58,75 @@ classDiagram
 使用者訓練 : 開始：Day 53
 使用者訓練 : 結束：Day 72
 使用者訓練 : 需時：20d
+使用者測試 : 開始：Day 131
+使用者測試 : 結束：Day 155
+使用者測試 : 需時：25d
+```
+---
+
+### 2. 甘特圖
+```mermaid
+gantt
+    title 甘特圖
+
+    section 研擬計畫
+    工作1 :a1, 2022-10-03, 1d
+        
+    section 任務分配
+    工作1 :a2, after a1, 4d
+       
+    section 取得硬體
+    工作1 :a3, after a1, 17d
+    
+    section 程式開發
+    工作1 :a4, after a2, 70d
+        
+    section 安裝硬體
+    工作1 :a5, after a3, 10d
+        
+    section 程式測試
+    工作2 :a6, after a4, 30d
+    
+    section 撰寫使用手冊
+    工作1 :a7, after a5, 25d
+    
+    section 轉換檔案
+    工作1 :a8, after a5, 20d
+    
+    section 系統測試
+    工作1 :a9, after a6, 25d
+    
+    section 使用者訓練
+    工作1 :a10, after a7 a8, 20d
+    
+    section 使用者測試
+    工作1 :a11, after a9 a10, 25d
+    
+```
+---
+### 3.關鍵路徑
+```mermaid
+classDiagram
+研擬計畫 --|> 任務分配
+任務分配 --|> 程式開發
+程式開發 --|> 程式測試
+程式測試 --|> 系統測試
+系統測試 --|> 使用者測試
+研擬計畫 : 開始：Day 1
+研擬計畫 : 結束：Day 1
+研擬計畫 : 需時：1d
+任務分配 : 開始：Day 2 
+任務分配 : 結束：Day 5
+任務分配 : 需時：4d
+程式開發 : 開始：Day 6
+程式開發 : 結束：Day 75
+程式開發 : 需時：70d
+程式測試 : 開始：Day 76
+程式測試 : 結束：Day 105
+程式測試 : 需時：30d
+系統測試 : 開始：Day 106
+系統測試 : 結束：Day 130
+系統測試 : 需時：25d
 使用者測試 : 開始：Day 131
 使用者測試 : 結束：Day 155
 使用者測試 : 需時：25d
